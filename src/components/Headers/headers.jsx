@@ -11,20 +11,20 @@ function Headers(){
                 </button>
                 <div className="collapse navbar-collapse" id="navbarsExample04">
                     <ul className="navbar-nav me-auto mb-2 mb-md-0">
-                        <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">Home</a>
+                    <li className="nav-item">
+                            <a className="nav-link" href="/">Home</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Volkswagen</a>
+                            <a className="nav-link" href="/Volkswagen">Volkswagen</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Audi</a>
+                            <a className="nav-link" href="/Audi">Audi</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Seat</a>
+                            <a className="nav-link" href="/Seat">Seat</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Skoda</a>
+                            <a className="nav-link" href="/Skoda">Skoda</a>
                         </li>
                     </ul>
                     <div>
