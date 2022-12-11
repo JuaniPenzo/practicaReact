@@ -21,7 +21,8 @@ function Seat(){
             url={item.img}
             Marca={item.marca}
             Modelo={item.modelo}
-            precio={"$"+item.precio}/>)}
+            precio={"$"+item.precio}
+            id={item.id}/>)}
           
           })}
       </div>

@@ -14,12 +14,13 @@ function App() {
       <Headers/>
       <Routes>
           <Route path='/' element={<Main/>}/>
+          <Route path='/practicaReact' element={<Main/>}/>
           <Route path='/Volkswagen' element={<Volkswagen/>}/>
           <Route path='/Audi' element={<Audi/>}/>
           <Route path='/Seat' element={<Seat/>}/>
           <Route path='/Skoda' element={<Skoda/>}/>
           <Route path='/Skoda' element={<Skoda/>}/>
-          <Route path='/item/:idProducto' element={<ItemDetailContainer></ItemDetailContainer>}/>
+          <Route path='/item/:idProducto' element={<ItemDetailContainer/>}/>
       </Routes>
     </BrowserRouter>
   );

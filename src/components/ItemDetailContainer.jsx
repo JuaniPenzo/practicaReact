@@ -11,11 +11,12 @@ function ItemDetailContainer(){
     let {idProducto} = useParams()
 
     useEffect( () => {
-        getSingleItem(idProducto).then( (response) => setProduct(response) )
-        .catch((error)=> {
+        getSingleItem(idProducto)
+        .then( (res) => setProduct(res) )
+        .catch((err)=> {
             alert("producto no encontrado")
         })
-    }, [])
+    })
   return (
     <div className='contDetail'>
         <h2>{product.marca}</h2>
