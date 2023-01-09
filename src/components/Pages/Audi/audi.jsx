@@ -2,17 +2,15 @@ import React, { useState, useEffect } from 'react'
 import './audi.css'
 import ItemListContainer from '../../ItemListContainer'
 //Importar la Promise
-import getItems from '../../../services/mockService'
-
-let products = []
+import {getItems} from '../../../services/firebase'
 
 function Audi(){
     //Creamos un estado para nuestros productos
-  const [products, setProducts] = useState([])
+    const [products, setProducts] = useState([])
     //Llamamos a la promise y guardamos la respuesta en un estado UNA UNICA VEZ
-  useEffect(()=>{
-    getItems().then((res)=>{setProducts(res)})
-  })
+    useEffect(()=>{
+      getItems().then((res)=>{setProducts(res)})
+    })
     return(
       <div className='contAudi'>
         {products.map((item)=>{
@@ -22,8 +20,9 @@ function Audi(){
           Marca={item.marca}
           Modelo={item.modelo}
           precio={"$"+item.precio}
-          id={item.id}/>)}
-        
+          discount={item.discount}
+          id={item.id}
+          key={item.id}/>)}
         })}
     </div>
     )

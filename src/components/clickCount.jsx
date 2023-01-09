@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import './clickCount.css'
 
 function ClickCount(props){
+  const {onAddToCart}= props
   const [count, setCount] = useState(1)
   //No pasarnos del valor maximo o minimo de stock
 
@@ -14,17 +16,15 @@ function ClickCount(props){
       setCount(count - 1)
     }
   }
-  function agregarCarrito(){
-    console.log("Agregado al carrito")
-  }
-
   return(
-    <div>
+    <div className='click'>
       <h3>{count}</h3>
-      <button onClick={sumarClick}>+</button>
-      <button disabled={count===1} onClick={restarClick}>-</button>
+      <div className='clickButton'>
+        <button type="button" className="btn btn-primary" disabled={count===1} onClick={restarClick}>-</button>
+        <button type="button" className="btn btn-primary" onClick={sumarClick}>+</button>
+      </div>
       <br/>
-      <button onClick={agregarCarrito}>Agregar al Carrito</button>
+      <button type="button" className="btn btn-secondary" onClick={()=>onAddToCart(count)}>Agregar al Carrito</button>
     </div>
   )
 }

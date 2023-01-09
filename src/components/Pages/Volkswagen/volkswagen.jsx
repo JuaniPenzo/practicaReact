@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import './volkswagen.css'
 import ItemListContainer from '../../ItemListContainer'
 //Importar la Promise
-import getItems from '../../../services/mockService'
+import {getItems} from '../../../services/firebase'
 
-let products = []
+
 
 function Volkswagen(){
     //Creamos un estado para nuestros productos
@@ -13,17 +13,19 @@ function Volkswagen(){
   useEffect(()=>{
     getItems().then((res)=>{setProducts(res)})
   })
-    return(
+  return(
         <div className='contVolkswagen'>
             {products.map((item)=>{
             if(item.marca === "Volkswagen")
-            {return (<ItemListContainer
+            {return(<ItemListContainer
               url={item.img}
               Marca={item.marca}
               Modelo={item.modelo}
               precio={"$"+item.precio}
-              id={item.id}/>)}
-            
+              discount={item.discount}
+              id={item.id}
+              key={item.id}
+              />)}
             })}
         </div>
     )

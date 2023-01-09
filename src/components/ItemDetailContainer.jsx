@@ -1,30 +1,28 @@
 import { useEffect, useState } from 'react'
-import './ItemDetailContainer.css'
-import ClickCount from './clickCount'
 //Importar la Promise
-import { getSingleItem } from '../services/mockService'
+import { getSingleItem } from '../services/firebase'
 import { useParams } from 'react-router-dom'
+import ItemDetail from './ItemDetail'
+import Loader from './Loader/loader'
 
 function ItemDetailContainer(){
   const [product, setProduct] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
     let {idProducto} = useParams()
 
     useEffect( () => {
+      setTimeout(()=> {
         getSingleItem(idProducto)
-        .then( (res) => setProduct(res) )
+        .then( (res) => setProduct(res), setIsLoading(false) )
         .catch((err)=> {
             alert("producto no encontrado")
         })
     })
+    },[idProducto])
+
   return (
-    <div className='contDetail'>
-        <h2>{product.marca}</h2>
-        <h3>{product.modelo}</h3>
-        <img src={product.img} alt="imagen" height="200px" />
-        <h4>{"$"+product.precio}</h4>
-        <ClickCount stock={product.stock}/>
-    </div>
+    isLoading? <Loader></Loader>:<ItemDetail product={product}></ItemDetail>
   )
 }
 

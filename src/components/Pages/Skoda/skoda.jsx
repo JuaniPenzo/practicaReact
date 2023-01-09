@@ -2,17 +2,16 @@ import React, { useState, useEffect } from 'react'
 import './skoda.css'
 import ItemListContainer from '../../ItemListContainer'
 //Importar la Promise
-import getItems from '../../../services/mockService'
+import {getItems} from '../../../services/firebase'
 
-let products = []
 
 function Skoda(){
     //Creamos un estado para nuestros productos
-  const [products, setProducts] = useState([])
-  //Llamamos a la promise y guardamos la respuesta en un estado UNA UNICA VEZ
-  useEffect(()=>{
-    getItems().then((res)=>{setProducts(res)})
-  })
+    const [products, setProducts] = useState([])
+    //Llamamos a la promise y guardamos la respuesta en un estado UNA UNICA VEZ
+    useEffect(()=>{
+      getItems().then((res)=>{setProducts(res)})
+    })
     return(
       <div className='contSkoda'>
         {products.map((item)=>{
@@ -22,7 +21,9 @@ function Skoda(){
           Marca={item.marca}
           Modelo={item.modelo}
           precio={"$"+item.precio}
-          id={item.id}/>)}
+          discount={item.discount}
+          id={item.id}
+          key={item.id}/>)}
         })}
     </div>
     )
