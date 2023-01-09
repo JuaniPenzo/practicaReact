@@ -2,13 +2,12 @@ import { initializeApp } from "firebase/app";
 import {getFirestore, doc, getDoc, getDocs, collection, addDoc, where, documentId, writeBatch, query} from "firebase/firestore"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB4pRwzPBedw_3TSl0Y9zcMZ6GxhJtmCLY",
-  authDomain: "proyectoreact-8bcbe.firebaseapp.com",
-  projectId: "proyectoreact-8bcbe",
-  storageBucket: "proyectoreact-8bcbe.appspot.com",
-  messagingSenderId: "895803904386",
-  appId: "1:895803904386:web:bc7e87dcbb6ef108033f9b",
-  measurementId: "G-6B06RQ9YBC"
+  apiKey: "AIzaSyB6RCe1c1Ers1HhGwMc59-ZrjEzURSrPbc",
+  authDomain: "proyectoreact-8fd79.firebaseapp.com",
+  projectId: "proyectoreact-8fd79",
+  storageBucket: "proyectoreact-8fd79.appspot.com",
+  messagingSenderId: "360537257720",
+  appId: "1:360537257720:web:3a74918317c2f0cf242d0d"
 };
   
   // Initialize Firebase
