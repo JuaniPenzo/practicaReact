@@ -10,7 +10,6 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 import Carrito from './components/Pages/cart';
 import { CartContextProvider } from './components/storage/cartContext';
 
-
 function App() {
   return (
     <CartContextProvider>

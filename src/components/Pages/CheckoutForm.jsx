@@ -19,11 +19,6 @@ function CheckoutForm({ onCheckout }) {
 
   function onSubmit(evt) {
     evt.preventDefault();
-    setBuyerData({
-      name: "",
-      email: "",
-      phone: "",
-    });
     onCheckout(buyerData);
   }
 

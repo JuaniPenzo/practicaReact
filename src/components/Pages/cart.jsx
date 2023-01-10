@@ -39,7 +39,7 @@ function Carrito(){
         }
         createBuyOrderWithStock(order).then((id)=>{
             return(
-              alert("Orden de compra "+{order}+" creada"),
+              alert(`Orden de compra ${id} creada`),
               setOrder(id),
               cleanCart()
             )

@@ -12,7 +12,7 @@ function Volkswagen(){
   //Llamamos a la promise y guardamos la respuesta en un estado UNA UNICA VEZ
   useEffect(()=>{
     getItems().then((res)=>{setProducts(res)})
-  })
+  }, [])
   return(
         <div className='contVolkswagen'>
             {products.map((item)=>{

@@ -2,13 +2,14 @@ import { initializeApp } from "firebase/app";
 import {getFirestore, doc, getDoc, getDocs, collection, addDoc, where, documentId, writeBatch, query} from "firebase/firestore"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB6RCe1c1Ers1HhGwMc59-ZrjEzURSrPbc",
-  authDomain: "proyectoreact-8fd79.firebaseapp.com",
-  projectId: "proyectoreact-8fd79",
-  storageBucket: "proyectoreact-8fd79.appspot.com",
-  messagingSenderId: "360537257720",
-  appId: "1:360537257720:web:3a74918317c2f0cf242d0d"
+  apiKey: "AIzaSyCHSQuF89Vk6TqMrKyQYoSMekJficr23Z8",
+  authDomain: "proyectoreact-5c066.firebaseapp.com",
+  projectId: "proyectoreact-5c066",
+  storageBucket: "proyectoreact-5c066.appspot.com",
+  messagingSenderId: "1045080262626",
+  appId: "1:1045080262626:web:cf42556da7b79373785bbb"
 };
+
   
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
@@ -44,31 +45,30 @@ const firebaseConfig = {
     return items
   }
 
-  export async function createBuyOrder(order){
-    const collectionRef = collection(DB, "orders")
-
-    let newOrder = await addDoc(collectionRef, order)
-
-    return newOrder.id
-  }
   export async function createBuyOrderWithStock(order){
     const collectionRef = collection(DB, "orders")
     const collectionProductsRef = collection(DB, "data" )
+
     let batch = writeBatch(DB)
 
     let arrayIds = order.items.map(itemInCart =>itemInCart.id)
 
-    const q = query(collectionProductsRef, where(documentId, "in", arrayIds))
+    const q = query(collectionProductsRef, where(documentId(), "in", arrayIds))
 
     let snapshot = await getDocs(q)
 
     snapshot.docs.forEach(doc=>{
       let stockDisponible = doc.data().stock;
-      let countInCart = doc.data().count;
-      if(stockDisponible<countInCart)
+      let ItemInCart = order.items.find((item) => item.id === doc.id);
+      let countItemInCart = ItemInCart.count;
+
+      console.log(stockDisponible)
+      console.log(countItemInCart)
+      
+      if(stockDisponible<countItemInCart)
         throw new Error("Stock no disponible")
         else
-        batch.update(doc, {stock : stockDisponible-countInCart});
+        batch.update(doc.ref, {stock : stockDisponible-countItemInCart});
       })
     await batch.commit()
 
